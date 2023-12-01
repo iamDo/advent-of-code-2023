@@ -17,7 +17,7 @@ NUMBER_DICTIONARY = {
 NUMBER_REGEX = r'{}'.format('|'.join(NUMBER_DICTIONARY.keys()))
 
 
-def get_input() -> list(str):
+def get_input() -> list:
     lines = []
     with open('input.txt') as f:
         lines = f.readlines()
@@ -26,7 +26,7 @@ def get_input() -> list(str):
     return lines
 
 
-def get_numbers_and_digits(string: str) -> list(str):
+def get_numbers_and_digits(string: str) -> list:
     number_or_digit_regex = ''.join(['(?=(', NUMBER_REGEX, '|\d)){1}'])
     return re.findall(number_or_digit_regex, string)
 
@@ -40,7 +40,7 @@ def ensure_digit(number_or_digit: str) -> int:
     return digit
 
 
-def get_pair(string: str) -> tuple(int, int):
+def get_pair(string: str) -> tuple:
     numbers_and_digits = get_numbers_and_digits(string)
     first_member = ensure_digit(numbers_and_digits[0])
     second_member = ensure_digit(numbers_and_digits[-1])

@@ -3,7 +3,7 @@ import re
 
 INPUT_FILE = 'input.txt'
 
-def get_input() -> list(str):
+def get_input() -> list:
     lines = []
     with open('input.txt') as f:
         lines = f.readlines()
@@ -12,7 +12,7 @@ def get_input() -> list(str):
     return lines
 
 
-def get_first_and_last_number(string: str) -> tuple(int, int):
+def get_first_and_last_number(string: str) -> tuple:
     first_num = int(re.search(r'\d{1}', string).group())
     last_num = int(re.search(r'\d{1}', string[::-1]).group())
 
