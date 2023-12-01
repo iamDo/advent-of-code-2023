@@ -17,7 +17,7 @@ NUMBER_DICTIONARY = {
 NUMBER_REGEX = r'{}'.format('|'.join(NUMBER_DICTIONARY.keys()))
 
 
-def get_input():
+def get_input() -> list(str):
     lines = []
     with open('input.txt') as f:
         lines = f.readlines()
@@ -26,12 +26,12 @@ def get_input():
     return lines
 
 
-def get_numbers_and_digits(string:str):
+def get_numbers_and_digits(string: str) -> list(str):
     number_or_digit_regex = ''.join(['(?=(', NUMBER_REGEX, '|\d)){1}'])
     return re.findall(number_or_digit_regex, string)
 
 
-def ensure_digit(number_or_digit: str):
+def ensure_digit(number_or_digit: str) -> int:
     digit = None
     if number_or_digit.isdigit():
         digit = int(number_or_digit)
@@ -40,18 +40,18 @@ def ensure_digit(number_or_digit: str):
     return digit
 
 
-def get_pair(string: str):
+def get_pair(string: str) -> tuple(int, int):
     numbers_and_digits = get_numbers_and_digits(string)
     first_member = ensure_digit(numbers_and_digits[0])
     second_member = ensure_digit(numbers_and_digits[-1])
     return (first_member, second_member)
 
 
-def combine_number_pair(number_pair: tuple):
+def combine_number_pair(number_pair: tuple) -> int:
     return number_pair[0]*10 + number_pair[1]
 
 
-def main():
+def main() -> None:
     lines = get_input()
     pairs = [ get_pair(line) for line in lines ]
     combined_numbers = [ combine_number_pair(pair) for pair in pairs ]
